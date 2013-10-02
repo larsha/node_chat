@@ -263,12 +263,14 @@ a {
 			  	border-bottom: 0;
 
 			  	li {
+					position: relative;
 					word-wrap: break-word;
-					padding: 1rem;
+					padding: 1.4rem;
 					color: lighten($black, 40%);
 
 					span {
-						float: right;
+						position: absolute;
+						bottom: -.2rem;
 						font-size: 1.1rem;
 						line-height: 2rem;
 						color: lighten($black, 60%);
@@ -279,14 +281,21 @@ a {
 					  	text-align: right;
 
 					  	span {
-							float: left;
+							left: .5rem;
 						}
 					}
 
-					li:first-child {
-						@include border-radius(5px, top);
-					}
+					&:not(.me) {
+
+						span {
+							right: .5rem;
+					  	}
+				  	}
+
+				li:first-child {
+					@include border-radius(5px, top);
 				}
+			}
 			 }
 		}
 
