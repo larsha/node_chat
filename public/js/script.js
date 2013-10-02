@@ -32,6 +32,9 @@ function sendMessage(e) {
 	var msg = document.querySelector('#message'),
 		time = new Date();
 
+	if (msg.value.replace(/\s/g, '') === '')
+		return;
+
 	var data = {
 		'user': '',
 		'message': msg.value,
