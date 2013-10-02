@@ -61,7 +61,7 @@ function appendMessage(data, me) {
 	li.appendChild(span);
 	messages.appendChild(li);
 
-	messages.scrollTop = messages.offsetHeight;
+	messages.scrollTop = messages.scrollHeight;
 }
 
 /*

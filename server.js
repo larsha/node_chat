@@ -2,7 +2,7 @@
 var express = require('express'),
 	app = express(),
 	http = require('http'),
-	server = http.createServer(app).listen(3000, '127.0.0.1'),
+	server = http.createServer(app).listen(3000),
 	io = require('socket.io').listen(server);
 
 // adjust settings for express
