@@ -1,6 +1,5 @@
 ## node_chat
 =========
-
 Trying out node.js with a live chat running socket.io, express and jade.
 
 ### usage
