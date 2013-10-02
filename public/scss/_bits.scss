@@ -1,0 +1,156 @@
+/* 
+==========================================================================
+	Vars
+========================================================================== */
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$grey: rgb(229, 229, 229);
+$lightGrey: rgb(247, 247, 247);
+$blue: rgba(242,250,255,1);
+$darkGrey: rgb(40, 40, 48);
+$green: rgb(97, 198, 40);
+$red: rgb(229, 36, 81);
+
+$fullWidth: 100%;
+$fullHeight: 100%;
+
+/* 
+==========================================================================
+	Keyframe animations
+========================================================================== */
+
+// message
+@-webkit-keyframes message {
+	0% {
+		top: 0;
+	}
+
+	100% {
+    	-webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+@-moz-keyframes message {
+	0% {
+		top: 0;
+	}
+	
+	100% {
+    	-moz-transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes message {
+	0% {
+		top: 0;
+	}
+	
+	100% {
+    	transform: translate3d(0, 0, 0);
+    }
+}
+
+// shake
+@-webkit-keyframes shake {	
+	50% {
+		-webkit-transform: translate3d(-10px, 0, 0);
+	}
+	100% {
+    	-webkit-transform: translate3d(10px, 0, 0);
+    }
+}
+
+@-moz-keyframes shake {
+	50% {
+		-moz-transform: translate3d(-10px, 0, 0);
+	}
+	100% {
+    	-moz-transform: translate3d(10px, 0, 0);
+    }
+}
+
+@keyframes shake {
+	50% {
+		transform: translate3d(-10px, 0, 0);
+	}
+	100% {
+    	transform: translate3d(10px, 0, 0);
+    }
+}
+
+/* 
+==========================================================================
+	Mixins
+========================================================================== */
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+    	color: $color;
+	}
+	&:-moz-placeholder {
+	    color: $color;
+	}
+	&::-moz-placeholder {
+	    color: $color;
+	}
+	&:-ms-input-placeholder {
+	    color: $color;
+	}
+}
+
+@mixin animate($param) {
+	-moz-animation: $param;
+	-webkit-animation: $param;
+	animation: $param;
+}
+
+@mixin transition($param) {
+	-moz-transition: $param;
+	-webkit-transition: $param;
+	transition: $param;
+}
+
+@mixin box-sizing() {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin linear-gradient($type, $from, $to) {
+	background: lighten($to, 10%);
+	background: -moz-linear-gradient($type, $from, $to);
+	background: -webkit-linear-gradient($type, $from, $to);
+	background: linear-gradient($type, $from, $to);
+}
+
+@mixin radial-gradient($type, $from, $to) {
+	background: lighten($to, 10%);
+	background: -webkit-radial-gradient($type, $from, $to);
+	background: -moz-radial-gradient($type, $from, $to);
+	background: -o-radial-gradient($type, $from, $to);
+	background: radial-gradient($type, $from, $to);
+}
+
+@mixin border-radius($radius, $type: null) {
+	
+	@if $type {
+    
+    	-webkit-border-#{$type}-left-radius: $radius;
+		-webkit-border-#{$type}-right-radius: $radius;
+		-moz-border-radius-#{$type}left: $radius;
+		-moz-border-radius-#{$type}right: $radius;
+		border-#{$type}-left-radius: $radius;
+		border-#{$type}-right-radius: $radius;
+    
+	} @else {
+	
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		border-radius: $radius;
+		
+	}
+}
+
+@mixin font {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+	font-size: 62.5%;
+}

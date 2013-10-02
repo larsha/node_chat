@@ -1,0 +1,20 @@
+doctype 5
+html
+	head
+		title Chat
+		link(rel='stylesheet', href='css/global.css')
+		script(src="/socket.io/socket.io.js")
+		script(src="js/minified/script.js")
+	body
+		div.form-box.form-chat
+			header
+				h1 Live Chat
+					span
+			section#show-messages
+				ul
+			section#write-message
+				form(action='/', method='post')
+					fieldset
+						input#message(type='text', name='message', placeholder='Meddelande', autocomplete='off', autofocus='autofocus')
+					fieldset
+						input.btn.btn-primary.right(type='submit', name='login', value='Skicka')

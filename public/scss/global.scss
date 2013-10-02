@@ -1,0 +1,320 @@
+@import "normalize";
+@import "bits";
+
+/* 
+==========================================================================
+	General
+========================================================================== */
+html,
+body {
+ 	@include font;
+}
+
+html {
+	height: $fullHeight;
+}
+
+body {
+	height: $fullHeight;
+	width: $fullWidth;
+	-webkit-font-smoothing: subpixel-antialiased;
+	@include radial-gradient(circle, $white, darken($white, 15%));
+}
+
+hr {
+	border: none;
+}
+
+div, section {
+	@include box-sizing;
+}
+
+a {
+	color: rgb(15, 115, 181);
+	text-decoration: none;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.hide {
+	display: none;
+}
+
+.right {
+	float: right !important;
+}
+
+.left {
+	float: left !important;
+}
+
+.clear {
+	overflow: hidden;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.clear-left {
+	clear: left;
+}
+
+.clear-right {
+	clear: right;
+}
+
+[class^="grid-"] {
+	float: left;
+}
+
+.grid-1-1 {
+	width: $fullWidth;
+}
+
+.grid-1-2 {
+	width: $fullWidth / 2;
+}
+
+.grid-1-3 {
+	width: $fullWidth / 3;
+}
+
+.grid-2-3 {
+	width: ($fullWidth / 3) * 2;
+}
+
+/* 
+==========================================================================
+	Button template
+========================================================================== */
+.btn {
+	display: inline-block;
+	padding: 0 2rem;
+	height: 3.7rem;
+	line-height: 3.7rem;
+	@include border-radius(4px);
+	text-decoration: none;
+	font-size: 1.3rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	
+	&.btn-small {
+		height: 2.4rem;
+		line-height: 2.4rem;
+		font-size: .8rem;
+		padding: 0 10px;
+	}
+	
+	&.btn-primary {
+		$background: rgb(138, 221, 109);
+		
+		background: $background;
+		color: $white;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+		border: solid 1px darken($background, 20%);
+		
+		&:hover {
+			background: darken($background, 10%);			
+		}	
+	}
+
+	&.btn-secondary {
+		$background: rgb(22, 168, 246);
+		
+		background: $background;
+		color: $white;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+		border: solid 1px darken($background, 20%);
+		
+		&:hover {
+			background: darken($background, 10%);			
+		}
+	}
+	
+	&.btn-alert {
+		$background: rgb(255, 0, 102);
+		
+		background: $background;
+		color: $white;
+		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+		border: solid 1px darken($background, 20%);
+		
+		&:hover {
+			background: darken($background, 10%);			
+		}
+	}
+}
+
+/* 
+==========================================================================
+	Message box
+========================================================================== */
+.message {
+	position: absolute;
+	top: -3rem;
+	height: 3rem;
+	line-height: 3rem;
+	font-size: 1.1rem;
+	text-align: center;
+	width: $fullWidth;
+	color: $white;
+	font-weight: bold;	
+	@include animate(forwards message .5s ease 1);
+	
+	&:before {
+		font-weight: normal;
+		font-size: 1.6rem;
+	}
+	
+	&.message-success {
+		background: $green;
+	}
+	
+	&.message-error {
+		background: $red;
+	}
+}
+
+/* 
+==========================================================================
+	Chat box
+========================================================================== */
+.form-box {
+	$form-box-width: 300px;
+ 	$form-box-height: 500px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -($form-box-width / 2);
+	width: $form-box-width;
+	background: $white;
+	box-shadow: 0 0 8px darken($grey, 7%);
+
+	&.shake {
+		@include animate(shake .15s ease 5);
+	}
+	
+	&.form-chat {
+		height: $form-box-height;
+		margin-top: -($form-box-height / 2);
+	}
+	
+	header {
+		position: relative;
+		width: $fullWidth;
+		height: 6rem;
+		background: $darkGrey;
+		text-align: center;
+		
+		h1 {
+			display: inline;
+			font-size: 1.4rem;
+			line-height: 6rem;
+			color: $white;
+			text-transform: uppercase;
+		}
+		
+		&:after {
+			position: absolute;
+			content: "";
+			bottom: 0;
+			left: 50%;
+			width: 0; 
+			height: 0; 
+			margin-left: -10px;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;	
+			border-bottom: 10px solid $white;
+		}
+	}
+
+  	section {
+		padding: 2.5rem;
+		font-size: 1.4rem;
+		font-weight: 300;
+
+		&#show-messages {
+		  	padding-bottom: 0;
+
+			> ul {
+			  	overflow: auto;
+			  	list-style: none;
+			  	padding: 0;
+				height: 30rem;
+			  	margin: 0;
+			   	@include border-radius(5px, top);
+			   	border: solid 1px darken($grey, 3%);
+			  	border-bottom: 0;
+
+			  	li {
+					word-wrap: break-word;
+					padding: 1rem;
+					color: lighten($black, 40%);
+
+					span {
+						float: right;
+						font-size: 1.1rem;
+						line-height: 2rem;
+						color: lighten($black, 60%);
+					}
+
+					&.me {
+						background: #f8f8f8;
+					  	text-align: right;
+
+					  	span {
+							float: left;
+						}
+					}
+
+					li:first-child {
+						@include border-radius(5px, top);
+					}
+				}
+			 }
+		}
+
+		&#write-message {
+		  	padding-top: 0;
+
+		  	form,
+			fieldset {
+				margin: 0;
+				padding: 0;
+			}
+
+		  	fieldset {
+				margin-bottom: 1rem;
+			}
+
+			input[type="text"] {
+				width: ($fullWidth - 1.5%);
+				height: 4rem;
+				text-indent: 1rem;
+				border: solid 1px darken($grey, 3%);
+				@include border-radius(5px, bottom);
+
+				&:focus {
+				  background: $blue;
+				  outline: none;
+				}
+			}
+		}
+	}
+}
