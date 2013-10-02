@@ -21,10 +21,6 @@ body {
 	@include radial-gradient(circle, $white, darken($white, 15%));
 }
 
-hr {
-	border: none;
-}
-
 div, section {
 	@include box-sizing;
 }
