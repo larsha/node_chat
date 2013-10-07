@@ -21,7 +21,10 @@ body {
 	@include radial-gradient(circle, $white, darken($white, 15%));
 }
 
-div, section {
+div,
+section,
+textarea,
+input[type="text"]{
 	@include box-sizing;
 }
 
@@ -309,11 +312,12 @@ a {
 			}
 
 			input[type="text"] {
-				width: ($fullWidth - 1.5%);
+				width: $fullWidth;
 				height: 4rem;
 				text-indent: 1rem;
 				border: solid 1px darken($grey, 3%);
 				@include border-radius(5px, bottom);
+			  	-webkit-appearance: none;
 
 				&:focus {
 				  background: $blue;

@@ -2,7 +2,7 @@
 var express = require('express'),
 	app = express(),
 	http = require('http'),
-	server = http.createServer(app).listen(3000),
+	server = http.createServer(app).listen(3001),
 	io = require('socket.io').listen(server);
 
 // adjust settings for express
@@ -45,6 +45,6 @@ function connectedClients(i) {
 	else
 		clients--;
 
-	// broadcast connected sockets to all
+	// broadcast to all connected sockets
 	io.sockets.emit('clients', {connections: clients});
 }
